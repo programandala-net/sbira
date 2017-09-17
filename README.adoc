@@ -1,0 +1,12 @@
+= ZX Beep
+:author: Marcos Cruz (programandala.net)
+:revdate: 2017-09-17
+
+ZX Beep is a SuperBASIC procedure that emulates the `beep` command of
+ZX Spectrum's Sinclair BASIC.
+
+Files:
+
+- zx_beep.bas: The main source, written in
+  http://programandala.net/es.programa.sbim.html[SBim] format.
+- zx_beep_bas: Automatic conversion to SuperBASIC format.
