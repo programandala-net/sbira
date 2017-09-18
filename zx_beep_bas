@@ -1,42 +1,77 @@
 1 rem 'zx_beep' procedure for S*BASIC
 2 rem that simulates the ZX Spectrum's 'beep' command
-3 rem Version 0.1.0+201709180046
-4 defproc zx_beep(duration,tone)
-5 beep duration*500000/72,ql_pitch%(tone+zx_middle_c_offset)
-6 repeat zx_beep_wait
-7 if not beeping:exit zx_beep_wait
-8 endrep zx_beep_wait
+3 rem Version 0.2.0+201709181710
+4 defproc zx_beep(duration,tone%)
+5 loc pitch%
+6 repeat zx_beep_busy:if not beeping:exit zx_beep_busy
+7 let pitch%=tone%+zx_beep_middle_c_offset%
+8 if pitch%>=0 and pitch%<=zx_beep_last_pitch%:beep duration*1000000/72,ql_pitch%(pitch%)
 9 enddef
 10 defproc init_zx_beep
-11 loc i,pitchs%,pitchs_per_data%,middle_c_hz
-12 let middle_c_hz=261.60
-13 let pitchs_per_data%=6
-14 let pitchs%=(42-24)*pitchs_per_data%
-15 dim ql_pitch%(pitchs%-1)
-16 restore 24
-17 for i=0 to pitchs%-1
-18 read hz
-19 if hz=middle_c_hz:let zx_middle_c_offset=i:print "middle C -->"
-20 let ql_pitch%(i)=11447/hz-10.6
-21 print i,ql_pitch%(i):pause
-22 endfor i
-23 enddef
-24 data 0016.35, 0017.32, 0018.35, 0019.45, 0020.60, 0021.83
-25 data 0023.12, 0024.50, 0025.96, 0027.50, 0029.14, 0030.87
-26 data 0032.70, 0034.65, 0036.71, 0038.89, 0041.20, 0043.65
-27 data 0046.25, 0049.00, 0051.91, 0055.00, 0058.27, 0061.74
-28 data 0065.41, 0069.30, 0073.42, 0077.78, 0082.41, 0087.31
-29 data 0092.50, 0098.00, 0103.80, 0110.00, 0116.50, 0123.50
-30 data 0130.80, 0138.60, 0146.80, 0155.60, 0164.80, 0174.60
-31 data 0185.00, 0196.00, 0207.70, 0220.00, 0233.10, 0246.90
-32 data 0261.60, 0277.20, 0293.70, 0311.10, 0329.60, 0349.20
-33 data 0370.00, 0392.00, 0415.30, 0440.00, 0466.20, 0493.90
-34 data 0523.30, 0554.40, 0587.30, 0622.30, 0659.30, 0698.50
-35 data 0740.00, 0784.00, 0830.60, 0880.00, 0932.30, 0987.80
-36 data 1047.00, 1109.00, 1175.00, 1245.00, 1319.00, 1397.00
-37 data 1480.00, 1568.00, 1661.00, 1760.00, 1865.00, 1976.00
-38 data 2093.00, 2217.00, 2349.00, 2489.00, 2637.00, 2794.00
-39 data 2960.00, 3136.00, 3322.00, 3520.00, 3729.00, 3951.00
-40 data 4186.00, 4435.00, 4699.00, 4978.00, 5274.00, 5588.00
-41 data 5920.00, 6272.00, 6645.00, 7040.00, 7459.00, 7902.00
+11 loc i,middle_c_pitch%
+12 let middle_c_pitch%=33
+13 let zx_beep_last_pitch%=77-22-1
+14 dim ql_pitch%(zx_beep_last_pitch%)
+15 restore 22
+16 for i=0 to zx_beep_last_pitch%
+17 read ql_pitch%(i)
+18 print i,ql_pitch%(i)
+19 if ql_pitch%(i)=middle_c_pitch%:let zx_beep_middle_c_offset%=i
+20 endfor i
+21 enddef
+22 data 000
+23 data 001
+24 data 002
+25 data 003
+26 data 004
+27 data 005
+28 data 006
+29 data 007
+30 data 008
+31 data 009
+32 data 010
+33 data 011
+34 data 012
+35 data 014
+36 data 015
+37 data 017
+38 data 019
+39 data 020
+40 data 022
+41 data 024
+42 data 026
+43 data 028
+44 data 031
+45 data 033
+46 data 036
+47 data 039
+48 data 041
+49 data 045
+50 data 048
+51 data 051
+52 data 055
+53 data 059
+54 data 063
+55 data 067
+56 data 072
+57 data 077
+58 data 082
+59 data 088
+60 data 093
+61 data 100
+62 data 106
+63 data 113
+64 data 121
+65 data 128
+66 data 137
+67 data 145
+68 data 155
+69 data 164
+70 data 175
+71 data 186
+72 data 198
+73 data 210
+74 data 223
+75 data 237
+76 data 252
 

@@ -1,0 +1,8 @@
+= ZX Beep
+:author: Marcos Cruz (programandala.net)
+:revdate: 2017-09-18
+
+- Fix: the notes are shorter/faster than on the ZX Spectrum, but the
+  time conversion seems fine.
+- SBASIC's `beep 0,x`  does not play forever, contrary to what the
+  manual reads, at least on SMSQmulator. Search for confirmation.
