@@ -1,7 +1,7 @@
 rem 'zx_beep' procedure for S*BASIC
 rem that simulates the ZX Spectrum's 'beep' command
 
-rem Version 0.3.0+201709181738
+rem Version 0.3.1+201709181749
 
 ' Author: Marcos Cruz (programandala.net), 2017
 
@@ -79,7 +79,6 @@ defproc init_zx_beep
 
   for i=0 to zx_beep_last_pitch%
     read ql_pitch%(i)
-    print i,ql_pitch%(i)
     if ql_pitch%(i)=middle_c_pitch%:\
       let zx_beep_middle_c_offset%=i
   endfor i
