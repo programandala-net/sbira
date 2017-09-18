@@ -1,7 +1,7 @@
 rem 'zx_beep' procedure for S*BASIC
 rem that simulates the ZX Spectrum's 'beep' command
 
-rem Version 0.2.0+201709181710
+rem Version 0.3.0+201709181738
 
 ' Author: Marcos Cruz (programandala.net), 2017
 
@@ -61,11 +61,21 @@ defproc init_zx_beep
   loc i,middle_c_pitch%
 
   let middle_c_pitch%=33
-  let zx_beep_last_pitch%=@zx_beep_pitch_end-@zx_beep_pitch-1
+
+  restore @zx_beep_data
+
+  zx_beep_last_pitch%=0
+
+  rep count_data
+    read i
+    if i=-1:\
+      exit count_data
+    let zx_beep_last_pitch%=zx_beep_last_pitch%+1
+  endrep count_data
 
   dim ql_pitch%(zx_beep_last_pitch%)
 
-  restore @zx_beep_pitch
+  restore @zx_beep_data
 
   for i=0 to zx_beep_last_pitch%
     read ql_pitch%(i)
@@ -82,7 +92,7 @@ enddef
 '    Hz approx = 11447/(10.6+pitch)
 ' pitch approx = 11447/Hz-10.6
 
-@zx_beep_pitch
+label @zx_beep_data
 
 '    QL pitch  Hz       Note
 '    --------  ------   ----
@@ -142,6 +152,6 @@ data 223     ' 048.99 ' G
 data 237     ' 046.24 ' F#
 data 252     ' 043.65 ' F 
 
-@zx_beep_pitch_end
+data -1 ' end of data
 
 ' vim: filetype=sbim

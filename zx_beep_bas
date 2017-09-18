@@ -1,6 +1,6 @@
 1 rem 'zx_beep' procedure for S*BASIC
 2 rem that simulates the ZX Spectrum's 'beep' command
-3 rem Version 0.2.0+201709181710
+3 rem Version 0.3.0+201709181738
 4 defproc zx_beep(duration,tone%)
 5 loc pitch%
 6 repeat zx_beep_busy:if not beeping:exit zx_beep_busy
@@ -10,68 +10,75 @@
 10 defproc init_zx_beep
 11 loc i,middle_c_pitch%
 12 let middle_c_pitch%=33
-13 let zx_beep_last_pitch%=77-22-1
-14 dim ql_pitch%(zx_beep_last_pitch%)
-15 restore 22
-16 for i=0 to zx_beep_last_pitch%
-17 read ql_pitch%(i)
-18 print i,ql_pitch%(i)
-19 if ql_pitch%(i)=middle_c_pitch%:let zx_beep_middle_c_offset%=i
-20 endfor i
-21 enddef
-22 data 000
-23 data 001
-24 data 002
-25 data 003
-26 data 004
-27 data 005
-28 data 006
-29 data 007
-30 data 008
-31 data 009
-32 data 010
-33 data 011
-34 data 012
-35 data 014
-36 data 015
-37 data 017
-38 data 019
-39 data 020
-40 data 022
-41 data 024
-42 data 026
-43 data 028
-44 data 031
-45 data 033
-46 data 036
-47 data 039
-48 data 041
-49 data 045
-50 data 048
-51 data 051
-52 data 055
-53 data 059
-54 data 063
-55 data 067
-56 data 072
-57 data 077
-58 data 082
-59 data 088
-60 data 093
-61 data 100
-62 data 106
-63 data 113
-64 data 121
-65 data 128
-66 data 137
-67 data 145
-68 data 155
-69 data 164
-70 data 175
-71 data 186
-72 data 198
-73 data 210
-74 data 223
-75 data 237
-76 data 252
+13 restore 28
+14 zx_beep_last_pitch%=0
+15 rep count_data
+16 read i
+17 if i=-1:exit count_data
+18 let zx_beep_last_pitch%=zx_beep_last_pitch%+1
+19 endrep count_data
+20 dim ql_pitch%(zx_beep_last_pitch%)
+21 restore 28
+22 for i=0 to zx_beep_last_pitch%
+23 read ql_pitch%(i)
+24 print i,ql_pitch%(i)
+25 if ql_pitch%(i)=middle_c_pitch%:let zx_beep_middle_c_offset%=i
+26 endfor i
+27 enddef
+28 data 000
+29 data 001
+30 data 002
+31 data 003
+32 data 004
+33 data 005
+34 data 006
+35 data 007
+36 data 008
+37 data 009
+38 data 010
+39 data 011
+40 data 012
+41 data 014
+42 data 015
+43 data 017
+44 data 019
+45 data 020
+46 data 022
+47 data 024
+48 data 026
+49 data 028
+50 data 031
+51 data 033
+52 data 036
+53 data 039
+54 data 041
+55 data 045
+56 data 048
+57 data 051
+58 data 055
+59 data 059
+60 data 063
+61 data 067
+62 data 072
+63 data 077
+64 data 082
+65 data 088
+66 data 093
+67 data 100
+68 data 106
+69 data 113
+70 data 121
+71 data 128
+72 data 137
+73 data 145
+74 data 155
+75 data 164
+76 data 175
+77 data 186
+78 data 198
+79 data 210
+80 data 223
+81 data 237
+82 data 252
+83 data -1
 
