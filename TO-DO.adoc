@@ -2,7 +2,16 @@
 :author: Marcos Cruz (programandala.net)
 :revdate: 2017-09-18
 
-- Fix: the notes are shorter/faster than on the ZX Spectrum, but the
-  time conversion seems fine.
-- SBASIC's `beep 0,x`  does not play forever, contrary to what the
-  manual reads, at least on SMSQmulator. Search for confirmation.
+== 2017-09-18
+
+Fix: the notes are shorter/faster than on the ZX Spectrum, unless
+`zx_bleep_tempo` is used, but the time conversion seems fine.
+
+Confirm: SBASIC's `beep 0,x`  does not play forever, contrary to what
+the manual reads, at least on SMSQmulator.
+
+Improve: Simplify the tempo configuration: The default calculation
+`zx_bleep_tempo*1000000/72`, being `zx_bleep_tempo` 2.1, could be
+replaced with a `zx_bleep_tempo`, provided its default value is
+29166.67. Less intuitive, though. Anyway, `1000000/72` should be
+replaced with its value.

@@ -1,27 +1,27 @@
 1 rem 'zx_beep' procedure for S*BASIC
 2 rem that simulates the ZX Spectrum's 'beep' command
-3 rem Version 0.3.0+201709181738
+3 rem Version 0.4.0+201709181828
 4 defproc zx_beep(duration,tone%)
 5 loc pitch%
 6 repeat zx_beep_busy:if not beeping:exit zx_beep_busy
 7 let pitch%=tone%+zx_beep_middle_c_offset%
-8 if pitch%>=0 and pitch%<=zx_beep_last_pitch%:beep duration*1000000/72,ql_pitch%(pitch%)
+8 if pitch%>=0 and pitch%<=zx_beep_last_pitch%:beep zx_beep_tempo*duration*1000000/72,ql_pitch%(pitch%)
 9 enddef
 10 defproc init_zx_beep
 11 loc i,middle_c_pitch%
-12 let middle_c_pitch%=33
-13 restore 28
-14 zx_beep_last_pitch%=0
-15 rep count_data
-16 read i
-17 if i=-1:exit count_data
-18 let zx_beep_last_pitch%=zx_beep_last_pitch%+1
-19 endrep count_data
-20 dim ql_pitch%(zx_beep_last_pitch%)
-21 restore 28
-22 for i=0 to zx_beep_last_pitch%
-23 read ql_pitch%(i)
-24 print i,ql_pitch%(i)
+12 let zx_beep_tempo=2.1
+13 let middle_c_pitch%=33
+14 restore 28
+15 zx_beep_last_pitch%=0
+16 rep count_data
+17 read i
+18 if i=-1:exit count_data
+19 let zx_beep_last_pitch%=zx_beep_last_pitch%+1
+20 endrep count_data
+21 dim ql_pitch%(zx_beep_last_pitch%)
+22 restore 28
+23 for i=0 to zx_beep_last_pitch%
+24 read ql_pitch%(i)
 25 if ql_pitch%(i)=middle_c_pitch%:let zx_beep_middle_c_offset%=i
 26 endfor i
 27 enddef
