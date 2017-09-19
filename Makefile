@@ -1,9 +1,9 @@
 # Makefile
 #
-# This file is part of ZX Beep
-# (http://programandala.net
+# This file is part of an SBASIC Library under development
+# http://programandala.net
 
-# Last modified 201709180008
+# Last modified 201709200022
 # See change log at the end of the file
 
 # ==============================================================
@@ -28,17 +28,28 @@ VPATH = ./
 
 MAKEFLAGS = --no-print-directory
 
+.ONESHELL:
+
 .PHONY: all
-all: zx_beep_bas
+all: targets
 
 .PHONY: clean
 clean:
-	rm -f zx_beep_bas
+	rm -f target/*_bas
 
-zx_beep_bas: zx_beep.bas
-	sbim $< $@
+source_files=$(wildcard src/*.bas)
+
+.PHONY: targets
+targets: $(source_files)
+	for source in $^; do
+		target=$$(basename $$source)
+		sbim $$source target/$${target%.*}_bas
+	done
 
 # ==============================================================
 # Change log
 
 # 2017-09-17: Start.
+#
+# 2017-09-20: Rewrite to convert all files from the <src> directory into the
+# <target> directory.

@@ -1,8 +1,10 @@
-= ZX Beep
+= SBASIC library
 :author: Marcos Cruz (programandala.net)
-:revdate: 2017-09-18
+:revdate: 2017-09-19
 
-== 2017-09-18
+== ZX Beep
+
+=== 2017-09-18
 
 Fix: the notes are shorter/faster than on the ZX Spectrum, unless
 `zx_bleep_tempo` is used, but the time conversion seems fine.

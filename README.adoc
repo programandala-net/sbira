@@ -1,35 +1,6 @@
-= ZX Beep
+= SBASIC library
 :author: Marcos Cruz (programandala.net)
-:revdate: 2017-09-17
 
-== Description
+An SBASIC library under development.
 
-ZX Beep is a QL SuperBASIC procedure that emulates the `beep` command
-of ZX Spectrum's Sinclair BASIC.
-
-ZX Beep was written for the
-http://programandala.net/es.programa.ritimba.html[Ritimba] project.
-
-ZX Beep has been tested with
-http://www.wlenerz.com/SMSQmulator/[SMSQmulator].
-
-== Files
-
-- zx_beep.bas: The main source, written in
-  http://programandala.net/es.programa.sbim.html[SBim] format.
-- zx_beep_bas: Automatic conversion to SuperBASIC format.
-- Makefile: the `make` file that converts from <zx_beep.bas> to
-  <zx_beep_bas>.
-
-== Usage example
-
-----
-merge zx_beep_bas
-init_zx_beep
-let zx_beep_tempo=2.1:rem Default. Adjust to your machine.
-zx_beep seconds,pitch
-----
-
-Where "seconds" and "pitch" are the parameters
-accepted by ZX Spectrum's 'beep' command (not their
-whole ranges, though).
+Home page: http://programandala.net
