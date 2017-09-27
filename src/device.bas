@@ -1,15 +1,32 @@
-rem device.bas
-rem A function for S*BASIC
-rem By Marcos Cruz (programandala.net), 2016, 2017
+' device.bas
 
-' 2016-01-25: Extract from ce4_sbim.
-' 2017-09-12: Fix typo. Rename "_sbim" ".sbim".
-' 2017-09-17: Rename ".sbim" ".bas". Update header.
+' This file is part of Sbira
+' http://programandala.net/en.program.sbira.html
+
+rem An SBASIC function that returns the first device where a file can be found.
+
+rem Author: Marcos Cruz (programandala.net), 2016, 2017
+
+' Last modified 201709272310
+' See change log at the end of the file
+
+' ==============================================================
+' License
+
+' You may do whatever you want with this work, so long as you
+' retain all copyright, authorship and credit notices and this
+' license in all redistributed copies and derived works.
+' There is no warranty.
+
+' ==============================================================
 
 deffn device$(file$,devices$)
 
-  rem Return the first device from a list where the given file is found.
-  rem devices$ = list of 3-letter devices, without separators.
+  ' Return the first device from a list where the given file is found,
+  ' eg. "flp3_".
+  '
+  ' devices$ = list of 3-letter devices, without separators, eg.
+  ' "winflpmdvdev".
 
   loc device_offset%,drive_number%,dev$
 
@@ -25,5 +42,16 @@ deffn device$(file$,devices$)
   ret dev$
 
 enddef
+
+' ==============================================================
+' Change log
+
+' 2016-01-25: Extract from ce4_sbim.
+'
+' 2017-09-12: Fix typo. Rename "_sbim" ".sbim".
+'
+' 2017-09-17: Rename ".sbim" ".bas". Update header.
+'
+' 2017-09-27: Update file header.
 
 ' vim: filetype=sbim

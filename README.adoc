@@ -1,6 +1,6 @@
-= SBASIC library
+== Sbira
 :author: Marcos Cruz (programandala.net)
 
-An SBASIC library under development.
+Sbira is an SBASIC library under development.
 
-Home page: http://programandala.net
+Home page: http://programandala.net/en.program.sbira.html
