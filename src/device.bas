@@ -3,11 +3,14 @@
 ' This file is part of Sbira
 ' http://programandala.net/en.program.sbira.html
 
-rem An SBASIC function that returns the first device where a file can be found.
+rem Function that returns the first device where a file can be found.
+
+' This function is deprecated. SBASIC's `home_dir$` can be used
+' instead.
 
 rem Author: Marcos Cruz (programandala.net), 2016, 2017
 
-' Last modified 201709272310
+' Last modified 201709291507
 ' See change log at the end of the file
 
 ' ==============================================================

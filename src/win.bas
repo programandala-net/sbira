@@ -3,13 +3,13 @@
 ' This file is part of Sbira
 ' http://programandala.net/en.program.sbira.html
 
-rem SBASIC functions to fetch window channel information.
+rem Functions that return window channel information.
 
 rem Authors:
 rem Simon n Goodwin, 1988
 rem Adapted to Sbira by Marcos Cruz (programandala.net), 2017
 
-' Last modified 201709272319
+' Last modified 201709280033
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -90,15 +90,29 @@ deffn win_font2(chan%)
   ret chan_l(chan%,46)
 enddef
 
-' XXX TODO --
-' deffn win_line%(chan%)
-'   ret win_ypos%(chan%)/win_cursor_height%(chan%)
-' enddef
+deffn win_csize_width%(chan%)
+  ' XXX TODO --
+  select on (chan_b%(#chan%,66) && %1100000)
+    =%0000000:ret 0
+    =%0100000:ret 1
+    =%1000000:ret 2
+  endsel
+enddef
 
-' XXX TODO --
-' deffn win_column%(chan%)
-'   ret win_xpos%(chan%)/win_cursor_width%(chan%)
-' enddef
+deffn win_csize_height%
+  ' XXX TODO --
+  ret (chan_b%(#chan%,66) && 16)<>0
+enddef
+
+deffn win_line%(chan%)
+  ' XXX TODO --
+  ret win_ypos%(chan%)/win_csize_height%(chan%)
+enddef
+
+deffn win_column%(chan%)
+  ' XXX TODO --
+  ret win_xpos%(chan%)/win_csize_width%(chan%)
+enddef
 
 ' ==============================================================
 ' Change log
@@ -109,5 +123,8 @@ enddef
 ' 2017-09-24: Try drafts of `win_column%` and win_line%`.
 '
 ' 2017-09-27: Update file header.
+'
+' 2017-09-28: Try drafts of `win_csize_width%` and
+' `win_csize_heigth%`.
 
 ' vim: filetype=sbim

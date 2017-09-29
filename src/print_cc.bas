@@ -3,14 +3,14 @@
 ' This file is part of Sbira
 ' http://programandala.net/en.program.sbira.html
 
-rem SBASIC procedure to print at the center of a window.
+rem Procedure that prints at the center of a window.
 
 rem Authors:
 rem Simon n Goodwin, 1991-12
 rem Suggested by Dario Leslie
 rem Adapted to Sbira by Marcos Cruz (programandala.net), 2017
 
-' Last modified 201709272324
+' Last modified 201709291505
 ' See change log at the end of the file
 
 ' ==============================================================
