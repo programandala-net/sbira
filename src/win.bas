@@ -9,7 +9,7 @@ rem Authors:
 rem Simon n Goodwin, 1988
 rem Adapted to Sbira by Marcos Cruz (programandala.net), 2017
 
-' Last modified 201709280033
+' Last modified 201710110022
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -38,32 +38,36 @@ deffn win_paper%(chan%)
 enddef
 
 deffn win_width%(chan%)
-  ' Pixel width of window chan%.
+  ' Pixel width of window chan%, not including its border.
   ret chan_w%(chan%,28)
 enddef
 
 deffn win_height%(chan%)
-  ' Pixel height of window chan%.
+  ' Pixel height of window chan%, not including its border.
   ret chan_w%(chan%,30)
 enddef
 
 deffn win_xpos%(chan%)
-  ' Cursor x coordinate of window chan%.
+  ' Cursor x coordinate of window chan%, relative to the top
+  ' left corner of the window, not including its border.
   ret chan_w%(chan%,34)
 enddef
 
 deffn win_ypos%(chan%)
-  ' Cursor y coordinate of window chan%.
+  ' Cursor y coordinate of window chan%, relative to the top
+  ' left corner of the window, not including its border.
   ret chan_w%(chan%,36)
 enddef
 
 deffn win_xmin%(chan%)
-  ' x co-ordinate of left edge of window chan%.
+  ' x co-ordinate of left edge of window chan%, not including
+  ' its border.
   ret chan_w%(chan%,24)
 enddef
 
 deffn win_ymin%(chan%)
-  ' y co-ordinate of top of window chan%.
+  ' y co-ordinate of top of window chan%, not including its
+  ' border.
   ret chan_w%(chan%,26)
 enddef
 
@@ -74,19 +78,37 @@ enddef
 
 deffn win_cursor_width%(chan%)
   ' Cursor width in pixels of window chan%.
-  ret chan_w%(chan%,40)
+  ret chan_w%(chan%,38)
 enddef
 
 deffn win_attr%(chan%)
-  ' See Table 3
+
+  ' Character attributes: this byte contains seven useful bits
+  ' of information about character printing in this window.
+
+  ' |===
+  ' | Bitmask  | Attribute
+  '
+  ' | %0000001 | Underlining on
+  ' | %0000010 | Flashing on
+  ' | %0000100 | Transparent background
+  ' | %0001000 | Overprinting: OVER -1
+  ' | %0010000 | Tall text: CSIZE ?,1
+  ' | %0100000 | Extra width: CSIZE 1, 3
+  ' | %1000000 | Double width: CSIZE 2, 3
+  ' |===
+
   ret chan_b%(chan%,66)
+
 enddef
 
 deffn win_font1(chan%)
+  ' Start address of first character set.
   ret chan_l(chan%,42)
 enddef
 
 deffn win_font2(chan%)
+  ' Start address of second character set.
   ret chan_l(chan%,46)
 enddef
 
@@ -126,5 +148,7 @@ enddef
 '
 ' 2017-09-28: Try drafts of `win_csize_width%` and
 ' `win_csize_heigth%`.
+'
+' 2017-10-10: Improve documentation.  Fix `win_cursor_width%`.
 
 ' vim: filetype=sbim
