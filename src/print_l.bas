@@ -7,7 +7,7 @@ rem Procedures to print left-justified strings.
 
 rem Author: Marcos Cruz (programandala.net), 2017
 
-' Last modified 201710172057
+' Last modified 201710180151
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -167,7 +167,7 @@ defproc bpl(times%)
 
   ' Benchmark all variants of `print_l`.
 
-  loc t0,i%,txt$
+  loc t0,t,i%,txt$
 
   let txt$=\
     "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no \
