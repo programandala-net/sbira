@@ -7,7 +7,7 @@ rem Procedures to print left-justified strings.
 
 rem Author: Marcos Cruz (programandala.net), 2017
 
-' Last modified 201710172003
+' Last modified 201710172057
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -31,46 +31,6 @@ defproc print_l(channel%,text$)
   ' Print the given text left justified from the current cursor
   ' position of the window identified by `channel%`.
 
-  local t$,first%,last%
-
-  if len(text$)
-    let t$=text$&" "
-    let first%=1
-    for last%=1 to len(t$)
-      if t$(last%)=" "
-        print #channel%,!t$(first% to last%-1);
-        let first%=last%+1
-      endif
-    endfor last%
-  endif
-
-enddef
-
-defproc print_l2(channel%,text$)
-
-  ' Print the given text left justified from the current cursor
-  ' position of the window identified by `channel%`.
-
-  local t$,first%,last%
-
-  if len(text$)
-    let t$=text$&" "
-    let first%=1
-    for last%=1 to len(t$)
-      if t$(last%)=" "
-        print #channel%,!t$(first% to last%-1);
-        let first%=last%+1
-      endif
-    endfor last%
-  endif
-
-enddef
-
-defproc print_l3(channel%,text$)
-
-  ' Print the given text left justified from the current cursor
-  ' position of the window identified by `channel%`.
-
   local first%,last%
 
   let first%=1
@@ -82,27 +42,6 @@ defproc print_l3(channel%,text$)
   next
     print #channel%,!text$(first% to);
   endfor last%
-
-enddef
-
-defproc print_l4(channel%,text$)
-
-  ' Print the given text left justified from the current cursor
-  ' position of the window identified by `channel%`.
-
-  local spacepos%,txt$
-
-  let txt$=text$
-  rep
-    let spacepos%=" " instr txt$
-    if spacepos%
-      print #channel%,!txt$(to spacepos%-1);
-      let txt$=txt$(spacepos%+1 to)
-    else
-      print #channel%,!txt$;
-      exit
-    endif
-  endrep
 
 enddef
 
@@ -142,7 +81,87 @@ defproc print_l_paragraph(channel%,text$)
 enddef
 
 ' ==============================================================
-' Benchmarks
+' Development benchmarks
+
+#ifdef VOID
+
+defproc print_l_v1(channel%,text$)
+
+  ' Print the given text left justified from the current cursor
+  ' position of the window identified by `channel%`.
+
+  local t$,first%,last%
+
+  if len(text$)
+    let t$=text$&" "
+    let first%=1
+    for last%=1 to len(t$)
+      if t$(last%)=" "
+        print #channel%,!t$(first% to last%-1);
+        let first%=last%+1
+      endif
+    endfor last%
+  endif
+
+enddef
+
+defproc print_l_v2(channel%,text$)
+
+  ' Print the given text left justified from the current cursor
+  ' position of the window identified by `channel%`.
+
+  local t$,first%,last%
+
+  let t$=text$&" "
+  let first%=1
+  for last%=1 to len(t$)
+    if t$(last%)=" "
+      print #channel%,!t$(first% to last%-1);
+      let first%=last%+1
+    endif
+  endfor last%
+
+enddef
+
+defproc print_l_v3(channel%,text$)
+
+  ' Print the given text left justified from the current cursor
+  ' position of the window identified by `channel%`.
+
+  local first%,last%
+
+  let first%=1
+  for last%=1 to len(text$)
+    if text$(last%)=" "
+      print #channel%,!text$(first% to last%-1);
+      let first%=last%+1
+    endif
+  next
+    print #channel%,!text$(first% to);
+  endfor last%
+
+enddef
+
+defproc print_l_v4(channel%,text$)
+
+  ' Print the given text left justified from the current cursor
+  ' position of the window identified by `channel%`.
+
+  local spacepos%,txt$
+
+  let txt$=text$
+  rep
+    let spacepos%=" " instr txt$
+    if spacepos%
+      print #channel%,!txt$(to spacepos%-1);
+      let txt$=txt$(spacepos%+1 to)
+    else
+      print #channel%,!txt$;
+      exit
+    endif
+  endrep
+
+enddef
 
 defproc bpl(times%)
 
@@ -194,14 +213,15 @@ defproc bpl(times%)
   let t0=date:\
   for i%=1 to times%:\
     at #0,0,0:\
-    print_l #0,txt$
+    print_l_v1 #0,txt$
 
+  let t=date-t0
   print \"v1: ";t;" seconds"
 
   let t0=date:\
   for i%=1 to times%:\
     at #0,0,0:\
-    print_l2 #0,txt$
+    print_l_v2 #0,txt$
 
   let t=date-t0
   print \\"v2: ";t;" seconds"
@@ -209,7 +229,7 @@ defproc bpl(times%)
   let t0=date:\
   for i%=1 to times%:\
     at #0,0,0:\
-    print_l3 #0,txt$
+    print_l_v3 #0,txt$
 
   let t=date-t0
   print \\\"v3: ";t;" seconds"
@@ -217,7 +237,7 @@ defproc bpl(times%)
   let t0=date:\
   for i%=1 to times%:\
     at #0,0,0:\
-    print_l4 #0,txt$
+    print_l_v4 #0,txt$
 
   let t=date-t0
   print \\\\"v4: ";t;" seconds"
@@ -226,12 +246,11 @@ defproc bpl(times%)
   '
   ' times    v1    v2    v3   v4
   ' ----------------------------
-  '   3       3     2     3    4
-  '   8       7     8     7   10
-  '  64      62    61    61   83
-  ' 256     248   242   240  318
+  ' 256     255   255   247  324
 
 enddef
+
+#endif
 
 ' ==============================================================
 ' Change log
@@ -240,7 +259,7 @@ enddef
 ' (http://programandala.net/es.programa.ritimba.html) and
 ' improved.
 '
-' 2017-10-17: Write altenative versions of `print_l` and
-' benchmark them.
+' 2017-10-17: Write altenative versions of `print_l`,
+' benchmark them, and use the best one.
 
 ' vim: filetype=sbim
