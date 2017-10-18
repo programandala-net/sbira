@@ -1,22 +1,8 @@
 = Sbira to-do list
 :author: Marcos Cruz (programandala.net)
-:revdate: 2017-09-27
+:revdate: 2017-10-18
 
-== General
-
-- Add `#include` to support requirements. First, SBim must be improved
-  to manage relative paths and check duplicated includings.
-
-== print_cc.bas
-
-- Check the length limit in `print_cc` or ignore the rest of the
-  string.
-
-== win.bas
-
-- Finish `win_column%` and `win_line%`.
-
-== zx_beep.bas
+== 2017-09-18: zx_beep.bas
 
 - Fix: the notes are shorter/faster than on the ZX Spectrum, unless
   `zx_bleep_tempo` is used, but the time conversion seems fine.
@@ -28,3 +14,12 @@
   29166.67. Less intuitive, though. Anyway, `1000000/72` should be
   replaced with its value.
 
+== 2017-09-27
+
+- Add `#include` to support requirements. First, SBim must be improved
+  to manage relative paths and check duplicated includings.
+
+== 2017-10-18
+
+- Add `rem` rulers to modules, to apart them in the target
+  <sbira_bas>.
