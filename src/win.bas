@@ -9,7 +9,7 @@ rem Authors:
 rem Simon n Goodwin, 1988
 rem Adapted to Sbira by Marcos Cruz (programandala.net), 2017
 
-' Last modified 201710202006
+' Last modified 201710202149
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -300,7 +300,7 @@ deffn win_font2(chan%)
 
   ' doc{
   '
-  ' win_font1 (chan%)
+  ' win_font2 (chan%)
   '
   ' A function that returns the start address of the second font
   ' of window ``chan%``.
@@ -353,7 +353,7 @@ deffn win_column%(chan%)
 
   ' doc{
   '
-  ' win_line% (chan%)
+  ' win_column% (chan%)
   '
   ' A function that returns the cursor X coordinate of window
   ' `chan%`.
