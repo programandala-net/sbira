@@ -10,7 +10,7 @@ rem Function that returns the first device where a file can be found.
 
 rem Author: Marcos Cruz (programandala.net), 2016, 2017
 
-' Last modified 201709291507
+' Last modified 201710201825
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -25,11 +25,22 @@ rem Author: Marcos Cruz (programandala.net), 2016, 2017
 
 deffn device$(file$,devices$)
 
-  ' Return the first device from a list where the given file is found,
-  ' eg. "flp3_".
+  ' doc{
   '
-  ' devices$ = list of 3-letter devices, without separators, eg.
-  ' "winflpmdvdev".
+  ' device$ (file$,devices$)
+  '
+  ' A function that returns the first device from a list
+  ' ``devices$`` where ``file$`` is found, eg. "flp3_".
+  '
+  ' ``devices$`` contains a list of 3-letter devices, without
+  ' separators, eg.  "winflpmdvdev".
+  '
+  ' NOTE: This function was first intended to get the device the
+  ' current program was launched from.  The introduction of
+  ' ``home_dir$`` in SBASIC makes this usage unnecessary, but
+  ' ``device$`` may be useful in other cases.
+  '
+  ' }doc
 
   loc device_offset%,drive_number%,dev$
 
@@ -56,5 +67,9 @@ enddef
 ' 2017-09-17: Rename ".sbim" ".bas". Update header.
 '
 ' 2017-09-27: Update file header.
+'
+' 2017-10-20: Document the code with the format required by
+' Glosara (http://programandala.net/en.program.glosara.html) in
+' order to build the manual.
 
 ' vim: filetype=sbim

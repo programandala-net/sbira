@@ -1,6 +1,6 @@
 = Sbira to-do list
 :author: Marcos Cruz (programandala.net)
-:revdate: 2017-10-18
+:revdate: 2017-10-20
 
 == 2017-09-18: zx_beep.bas
 
@@ -23,3 +23,11 @@
 
 - Add `rem` rulers to modules, to apart them in the target
   <sbira_bas>.
+
+== 2017-10-20
+
+- Write function variants of the procedures that load images, to
+  return the I/O result.
+- Homogenize notation of parameters, eg. `ch%` vs `channel%` vs
+  `chan%`; `txt$` vs `text$`...
+- Make `centre_line` and `centre_column` integer.
