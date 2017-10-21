@@ -1,4 +1,6 @@
 target/*
 !target/.gitignore
+doc/*
+!doc/.gitignore
 
 # vim: filetype=config

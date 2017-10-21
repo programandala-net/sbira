@@ -1,6 +1,6 @@
 = Sbira to-do list
 :author: Marcos Cruz (programandala.net)
-:revdate: 2017-10-20
+:revdate: 2017-10-21
 
 == 2017-09-18: zx_beep.bas
 
@@ -31,3 +31,7 @@
 - Homogenize notation of parameters, eg. `ch%` vs `channel%` vs
   `chan%`; `txt$` vs `text$`...
 - Make `centre_line` and `centre_column` integer.
+
+== 2017-10-21
+
+- Check the entry links in the PDF version of the manual.
