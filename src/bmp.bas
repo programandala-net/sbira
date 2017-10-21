@@ -7,7 +7,7 @@ rem BMP format tools.
 
 rem Author: Marcos Cruz (programandala.net), 2017
 
-' Last modified 201710201808
+' Last modified 201710210210
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -114,10 +114,9 @@ defproc bmp_to_pic(infile$,outfile$)
   ' image ``outfile$``.
   '
   ' NOTE: This procedure uses the following S*BASIC extensions:
-  '
-  ' - From BMPCVT (by Wolfgang Lenerz, 2002): ``wl_bmp3load``.
-  ' - From EasyPtr 4 (by Albin Hessler and Marcel Kilgus, 2016):
-  '   ``wsain``, ``wsasv`` and ``s_wsa``.
+  ' ``wl_bmp3load`` from BMPCVT (by Wolfgang Lenerz, 2002);
+  ' ``wsain``, ``wsasv`` and ``s_wsa`` from EasyPtr 4 (by Albin
+  ' Hessler and Marcel Kilgus, 2016).
   '
   ' }doc
 
@@ -147,6 +146,8 @@ enddef
 '
 ' 2017-10-20: Document the code with the format required by
 ' Glosara (http://programandala.net/en.program.glosara.html) in order to build the manual.
+'
+' 2017-10-21: Fix and improve documentation.
 
 ' vim: filetype=sbim
 

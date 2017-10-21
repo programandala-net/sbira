@@ -9,7 +9,7 @@ rem Authors:
 rem Simon n Goodwin, 1988
 rem Adapted to Sbira by Marcos Cruz (programandala.net), 2017
 
-' Last modified 201710202149
+' Last modified 201710210206
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -31,7 +31,7 @@ deffn win_base(chan%)
   ' A function that returns the screen address of top left of
   ' window ``chan%``.
   '
-  ' NOTE: This function uses `chan_l` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_l`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' }doc
@@ -48,7 +48,7 @@ deffn win_ink%(chan%)
   '
   ' A function that returns the ink colour of window ``chan%``.
   '
-  ' NOTE: This function uses `chan_b%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_b%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_paper%`, `win_attr%`.
@@ -68,7 +68,7 @@ deffn win_paper%(chan%)
   ' A function that returns the paper colour of window
   ' ``chan%``.
   '
-  ' NOTE: This function uses `chan_b%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_b%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_ink%`, `win_attr%`.
@@ -88,7 +88,7 @@ deffn win_width%(chan%)
   ' A function that returns the width (in pixels) of window
   ' ``chan%``, not including its border.
   '
-  ' NOTE: This function uses `chan_w%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_w%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_height%`, `win_xmin%`.
@@ -108,7 +108,7 @@ deffn win_height%(chan%)
   ' A function that returns the height (in pixels) of window
   ' ``chan%``, not including its border.
   '
-  ' NOTE: This function uses `chan_w%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_w%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_width%`, `win_ymin%`.
@@ -129,7 +129,7 @@ deffn win_xpos%(chan%)
   ' ``chan%``, relative to the top left corner of the window,
   ' not including its border.
   '
-  ' NOTE: This function uses `chan_w%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_w%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_ypos%`, `win_xmin%`.
@@ -150,7 +150,7 @@ deffn win_ypos%(chan%)
   ' ``chan%``, relative to the top left corner of the window,
   ' not including its border.
   '
-  ' NOTE: This function uses `chan_w%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_w%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_xpos%`, `win_ymin%`.
@@ -170,7 +170,7 @@ deffn win_xmin%(chan%)
   ' A function that returns the cursor X coordinate of the left
   ' edge of window ``chan%``, not including its border.
   '
-  ' NOTE: This function uses `chan_w%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_w%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_ymin%`, `win_width%`, `win_xpos%`.
@@ -190,7 +190,7 @@ deffn win_ymin%(chan%)
   ' A function that returns the cursor Y coordinate of the top
   ' of window ``chan%``, not including its border.
   '
-  ' NOTE: This function uses `chan_w%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_w%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_xmin%`, `win_height%`, `win_ypos%`
@@ -210,7 +210,7 @@ deffn win_cursor_height%(chan%)
   ' A function that returns the cursor height (in pixels) of
   ' window ``chan%``.
   '
-  ' NOTE: This function uses `chan_w%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_w%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_cursor_width%`, `win_attr%`.
@@ -230,7 +230,7 @@ deffn win_cursor_width%(chan%)
   ' A function that returns the cursor width (in pixels) of
   ' window ``chan%``.
   '
-  ' NOTE: This function uses `chan_w%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_w%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_cursor_height%`, `win_attr%`.
@@ -263,7 +263,7 @@ deffn win_attr%(chan%)
   ' | %1000000 | Double width: CSIZE 2, 3
   ' |===
 
-  ' NOTE: This function uses `chan_b%` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_b%`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_paper%`, `win_ink%`, `win_cursor_width%`,
@@ -284,7 +284,7 @@ deffn win_font1(chan%)
   ' A function that returns the start address of the first font
   ' of window ``chan%``.
   '
-  ' NOTE: This function uses `chan_l` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_l`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_font2`, `win_cursor_width%`, `win_cursor_height%`,
@@ -305,7 +305,7 @@ deffn win_font2(chan%)
   ' A function that returns the start address of the second font
   ' of window ``chan%``.
   '
-  ' NOTE: This function uses `chan_l` from Simon N. Goodwin's
+  ' NOTE: This function uses ``chan_l`` from Simon N. Goodwin's
   ' DIY Toolkit (volume C).
   '
   ' See: `win_font1`, `win_cursor_width%`, `win_cursor_height%`,
@@ -421,5 +421,7 @@ enddef
 '
 ' 2017-10-20: Document the code with the format required by
 ' Glosara (http://programandala.net/en.program.glosara.html) in order to build the manual.
+'
+' 2017-10-21: Fix documentation.
 
 ' vim: filetype=sbim

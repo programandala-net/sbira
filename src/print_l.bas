@@ -7,7 +7,7 @@ rem Procedures to print left-justified strings.
 
 rem Author: Marcos Cruz (programandala.net), 2017
 
-' Last modified 201710201801
+' Last modified 201710210207
 ' See change log at the end of the file
 
 ' ==============================================================
@@ -40,7 +40,7 @@ let paragraph_indentation% = 2
   ' paragraph_indentation%
   '
   ' A variable that holds the number of spaces at the start of
-  ' the first line of a `paragraph`.
+  ' the first line of a `paragraph`. Its default value is 2.
   '
   ' See: `paragraph_separation%`.
   '
@@ -76,7 +76,6 @@ enddef
 
 defproc paragraph(channel%)
 
-
   ' doc{
   '
   ' paragraph (channel%)
@@ -86,7 +85,8 @@ defproc paragraph(channel%)
   ' by variables `paragraph_indentation%` and
   ' `paragraph_separation%`.
   '
-  ' See: `end_paragraph`, `print_l_paragraph`.
+  ' See: `end_paragraph`, `print_l_paragraph`,
+  ' `paragraph_separation%`, `paragraph_indentation%`.
   '
   ' }doc
 
@@ -107,7 +107,7 @@ defproc end_paragraph(channel%)
   ' end_paragraph (channel%)
   '
   ' A procedure that ends the current paragraph in the window
-  ' identified by `channel%`.
+  ' identified by ``channel%``.
   '
   ' See: `paragraph`, `print_l_paragraph`.
   '
@@ -119,15 +119,16 @@ enddef
 
 defproc print_l_paragraph(channel%,text$)
 
-
   ' doc{
   '
-  ' print_l_paragraph(channel%,text$)
+  ' print_l_paragraph (channel%,text$)
   '
   ' A procedure that prints ``text$`` left justified as a new
-  ' paragraph, in the window identified by `channel%`. This
+  ' paragraph, in the window identified by ``channel%``. This
   ' procedure just calls `paragraph`, `print_l` and
   ' `end_paragraph`.
+  '
+  ' See: `paragraph_separation%`, `paragraph_indentation%`.
   '
   ' }doc
 
@@ -145,7 +146,7 @@ enddef
 defproc print_l_v1(channel%,text$)
 
   ' Print the given text left justified from the current cursor
-  ' position of the window identified by `channel%`.
+  ' position of the window identified by ``channel%``.
 
   local t$,first%,last%
 
@@ -165,7 +166,7 @@ enddef
 defproc print_l_v2(channel%,text$)
 
   ' Print the given text left justified from the current cursor
-  ' position of the window identified by `channel%`.
+  ' position of the window identified by ``channel%``.
 
   local t$,first%,last%
 
@@ -183,7 +184,7 @@ enddef
 defproc print_l_v3(channel%,text$)
 
   ' Print the given text left justified from the current cursor
-  ' position of the window identified by `channel%`.
+  ' position of the window identified by ``channel%``.
 
   local first%,last%
 
@@ -202,7 +203,7 @@ enddef
 defproc print_l_v4(channel%,text$)
 
   ' Print the given text left justified from the current cursor
-  ' position of the window identified by `channel%`.
+  ' position of the window identified by ``channel%``.
 
   local spacepos%,txt$
 
@@ -322,5 +323,7 @@ enddef
 ' 2017-10-20: Document the code with the format required by
 ' Glosara (http://programandala.net/en.program.glosara.html) in
 ' order to build the manual.
+'
+' 2017-10-21: Fix and improve documentation.
 
 ' vim: filetype=sbim
