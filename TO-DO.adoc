@@ -30,7 +30,6 @@
   return the I/O result.
 - Homogenize notation of parameters, eg. `ch%` vs `channel%` vs
   `chan%`; `txt$` vs `text$`...
-- Make `centre_line` and `centre_column` integer.
 
 == 2017-10-21
 
